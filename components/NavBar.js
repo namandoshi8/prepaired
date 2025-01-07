@@ -14,6 +14,7 @@ function NavBar() {
         width={200}
         height={200}
         className="ml-10 mt-0"
+        priority
       />
       <ul className="flex gap-6">
         <li

@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { MockInterview } from "@/utils/schema";
+import { redirect } from "next/navigation";
 
 function AddNewInterview() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,18 +43,23 @@ function AddNewInterview() {
     setJsonMockResponse(JSON.parse(response));
 
     if (response) {
-      const resp = await db.insert(MockInterview).values({
-        mockId: uuidv4(),
-        jobPosition: jobPosition,
-        jobDescription: jobDescription,
-        jobExperience: jobExperience,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        createdAt: moment().format("DD-MM-YYYY"),
-        jsonMockResponse: jsonMockResponse,
-      });
+      const resp = await db
+        .insert(MockInterview)
+        .values({
+          mockId: uuidv4(),
+          jobPosition: jobPosition,
+          jobDescription: jobDescription,
+          jobExperience: jobExperience,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+          createdAt: moment().format("DD-MM-YYYY"),
+          jsonMockResponse: jsonMockResponse,
+        })
+        .returning({ mockId: MockInterview.mockId });
 
       if (resp) {
+        console.log(resp[0].mockId);
         setIsOpen(false);
+        redirect(`/dashboard/interview/${resp[0].mockId}`);
       }
     }
     setLoading(false);
