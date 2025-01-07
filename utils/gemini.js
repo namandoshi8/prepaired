@@ -25,10 +25,15 @@ export async function GenerateQuestions(data) {
   });
   //   console.log(data);
 
-  const prompt = `Job Position: ${data.jobPosition}, Job Description: ${data.jobDescription}, Years of Experience: ${data.jobExperience}, based on this information provide 5 interview questions and answers in json format`;
+  const prompt = `Job Position: ${data.jobPosition}, Job Description: ${data.jobDescription}, Years of Experience: ${data.jobExperience}, based on this information provide 5 interview questions and answers in json format.Return question and answers as  JSON array without and headers`;
 
   const result = await chatSession.sendMessage(prompt);
-  const response = result.response.text().replace("```json", "").replace("```", "");
+
+  console.log(result.response.text());
+  const response = result.response
+    .text()
+    .replace("```json", "")
+    .replace("```", "");
   console.log(response);
   return response;
 }

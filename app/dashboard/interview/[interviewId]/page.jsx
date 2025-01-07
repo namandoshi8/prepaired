@@ -98,9 +98,7 @@ function Interview({ params }) {
         </div>
       </div>
       <Link href={`/dashboard/interview/${params.interviewId}/start`}>
-        <Button className="mt-5">
-          {isEnabled ? "Start Interview" : "Enable Camera and Mic"}
-        </Button>
+        <Button className="mt-5">Start Interview</Button>
       </Link>
     </div>
   );

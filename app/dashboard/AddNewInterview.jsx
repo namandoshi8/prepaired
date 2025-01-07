@@ -27,8 +27,10 @@ function AddNewInterview() {
   const [jobDescription, setJobDescription] = useState("");
   const [jobExperience, setJobExperience] = useState("");
   const [loading, setLoading] = useState(false);
-  const [jsonMockResponse, setJsonMockResponse] = useState([]);
+  // const [jsonMockResponse, setJsonMockResponse] = useState([]);
   const { user } = useUser();
+
+  async function insertData() {}
   async function handleSubmit(e) {
     setLoading(true);
     e.preventDefault();
@@ -38,11 +40,13 @@ function AddNewInterview() {
       jobDescription,
       jobExperience,
     });
-    // console.log(response);
-    console.log(JSON.parse(response));
-    setJsonMockResponse(JSON.parse(response));
+    console.log(response);
+    // setJsonMockResponse(response);
 
     if (response) {
+      console.log("inserting data");
+      // console.log(jsonMockResponse);
+      // insertData();
       const resp = await db
         .insert(MockInterview)
         .values({
@@ -52,7 +56,7 @@ function AddNewInterview() {
           jobExperience: jobExperience,
           createdBy: user?.primaryEmailAddress?.emailAddress,
           createdAt: moment().format("DD-MM-YYYY"),
-          jsonMockResponse: jsonMockResponse,
+          jsonMockResponse: response,
         })
         .returning({ mockId: MockInterview.mockId });
 

@@ -1,5 +1,7 @@
 "use client";
 
+import AnswerSection from "@/components/AnswerSection";
+import Questions from "@/components/Questions";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
@@ -8,6 +10,7 @@ import { useEffect, useState } from "react";
 function InterviewPage({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [questions, setQuestions] = useState([]);
+  const [activeQuestion, setActiveQuestion] = useState(0);
   useEffect(() => {
     const id = params.interviewId;
     getInterview(id);
@@ -25,7 +28,12 @@ function InterviewPage({ params }) {
     // setInterviewData();
     // console.log(interviewData);
   }
-  return <div className="grid grid-cols-1 md:grid-cols-2"></div>;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <Questions questions={questions} activeQuestion={activeQuestion} />
+      <AnswerSection />
+    </div>
+  );
 }
 
 export default InterviewPage;
