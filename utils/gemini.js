@@ -52,7 +52,7 @@ export async function AnswerFeedback(prompt) {
     .replace("```json", "")
     .replace("```", "");
   console.log(response);
-  // return response;
+  return response;
 }
 
 // run();

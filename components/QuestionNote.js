@@ -2,7 +2,7 @@ import { Lightbulb } from "lucide-react";
 
 function QuestionNote() {
   return (
-    <div className="border rounded-lg p-5 bg-blue-100 mt-20">
+    <div className="border rounded-lg p-5 bg-blue-100 mt-20 mb-0">
       <h2 className="flex text-primary items-center gap-2">
         <Lightbulb />
         <strong>Note:</strong>

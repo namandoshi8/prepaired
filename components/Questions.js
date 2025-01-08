@@ -19,6 +19,7 @@ function Questions({ questions, activeQuestion }) {
         ))}
       </div>
       <h2 className="my-5 text-lg ">{questions[activeQuestion]?.question}</h2>
+
       <QuestionNote />
     </div>
   );

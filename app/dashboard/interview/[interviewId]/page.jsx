@@ -17,9 +17,11 @@ import Webcam from "react-webcam";
 function Interview({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [isEnabled, setIsEnabled] = useState(false);
+  const [interviewId, setInterviewId] = useState();
   useEffect(() => {
     const id = params.interviewId;
     getInterview(id);
+    setInterviewId(id);
   }, []);
   async function getInterview(id) {
     const result = await db
@@ -97,7 +99,7 @@ function Interview({ params }) {
           )}
         </div>
       </div>
-      <Link href={`/dashboard/interview/${params.interviewId}/start`}>
+      <Link href={`/dashboard/interview/${interviewId}/start`}>
         <Button className="mt-5">Start Interview</Button>
       </Link>
     </div>
