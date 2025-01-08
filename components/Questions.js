@@ -5,7 +5,7 @@ function Questions({ questions, activeQuestion }) {
   return (
     <div className="p-5 border rounded-lg mt-10">
       <div className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {questions.map((question, index) => (
+        {questions?.map((question, index) => (
           <h2
             key={index}
             className={`rounded-full border text-center cursor-pointer p-2 ${
