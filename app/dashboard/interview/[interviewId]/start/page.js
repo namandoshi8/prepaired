@@ -31,7 +31,7 @@ function InterviewPage({ params }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <Questions questions={questions} activeQuestion={activeQuestion} />
-      <AnswerSection />
+      <AnswerSection questions={questions} activeQuestion={activeQuestion} />
     </div>
   );
 }

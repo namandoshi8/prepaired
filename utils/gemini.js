@@ -38,4 +38,21 @@ export async function GenerateQuestions(data) {
   return response;
 }
 
+export async function AnswerFeedback(prompt) {
+  const chatSession = model.startChat({
+    generationConfig,
+  });
+  //   console.log(data);
+
+  const result = await chatSession.sendMessage(prompt);
+
+  console.log(result.response.text());
+  const response = result.response
+    .text()
+    .replace("```json", "")
+    .replace("```", "");
+  console.log(response);
+  // return response;
+}
+
 // run();
