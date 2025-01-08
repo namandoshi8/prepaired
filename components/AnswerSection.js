@@ -51,7 +51,7 @@ function AnswerSection({ questions, activeQuestion, interiewId }) {
     const feedbackPromt = `Question: ${
       questions[activeQuestion]?.question
     } , User Answer: ${userAnswer ? userAnswer : "No Answer Provided"} ,
-      Depending on the answer, you can provide feedback to the user and area of improvement for the user in 50-80 words in JSON format with rating field and feedback field
+      Depending on the answer, you can provide feedback to the user and area of improvement along with rating out of 5 for the user in 50-80 words in JSON format with rating field and feedback field
       Just return JSON array without any headers`;
 
     console.log(feedbackPromt);
@@ -59,6 +59,8 @@ function AnswerSection({ questions, activeQuestion, interiewId }) {
     // console.log(results);
     // console.log(userAnswer);
     // setUserAnswer("");
+    const userEmail = user?.primaryEmailAddress?.emailAddress;
+    console.log(userEmail);
 
     const feedback = await AnswerFeedback(feedbackPromt);
     const jsonFeedback = JSON.parse(feedback);
@@ -70,7 +72,7 @@ function AnswerSection({ questions, activeQuestion, interiewId }) {
       rating: jsonFeedback[0].rating,
       feedback: jsonFeedback[0].feedback,
       correctAnswer: questions[activeQuestion]?.answer,
-      userEmail: user?.primaryEmailAddress?.emailAddress,
+      userEmail: userEmail,
       createdAt: moment().format("DD-MM-YYYY"),
     });
     if (resp) {

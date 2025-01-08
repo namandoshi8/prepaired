@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function InterviewPage({ params }) {
@@ -54,7 +55,9 @@ function InterviewPage({ params }) {
           </Button>
         )}
         {activeQuestion === questions.length - 1 && (
-          <Button>End Interview</Button>
+          <Link href={`/dashboard/interview/${interiewId}/feedback`}>
+            <Button>End Interview</Button>
+          </Link>
         )}
       </div>
     </div>
