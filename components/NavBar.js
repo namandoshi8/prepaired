@@ -55,7 +55,7 @@ function NavBar() {
         {user ? (
           <UserButton />
         ) : (
-          <Link href="/login">
+          <Link href="/sign-in">
             <Button>Login</Button>
           </Link>
         )}
