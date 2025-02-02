@@ -4,7 +4,7 @@ export const metadata = {
 };
 
 function DashboardLayout({ children }) {
-  return <div className="mx-5 md:mx-20 lg:mx-40 ">{children}</div>;
+  return <div className="mx-5 md:mx-20 lg:mx-40 mt-20">{children}</div>;
 }
 
 export default DashboardLayout;

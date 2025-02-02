@@ -10,57 +10,44 @@ function NavBar() {
   const { user } = useUser();
   const path = usePathname();
   return (
-    <div className="flex justify-between items-center bg-blue-100 shadow-md">
-      <Link href="/">
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={300}
-          height={200}
-          className="ml-10 mt-0"
-          priority
-        />
-      </Link>
-      <ul className="flex ml-0 gap-6">
-        <li
-          className={`hover:font-bold hover:text-primary transition cursor-pointer ${
-            path === "/" ? "font-bold text-primary" : ""
-          }`}
-        >
-          <Link href="/">Home</Link>
-        </li>
-        <li
-          className={`hover:font-bold hover:text-primary transition cursor-pointer ${
-            path === "/dashboard" ? "font-bold text-primary" : ""
-          }`}
-        >
-          <Link href="/dashboard">Dashboard</Link>
-        </li>
-        {/* <li
-          className={`hover:font-bold hover:text-primary transition cursor-pointer ${
-            path === "/how-it-works" ? "font-bold text-primary" : ""
-          }`}
-        >
-          How it works?
-        </li> */}
-        <li
-          className={`hover:font-bold hover:text-primary transition cursor-pointer ${
-            path === "/pricing" ? "font-bold text-primary" : ""
-          }`}
-        >
-          <Link href="/pricing">Pricing</Link>
-        </li>
-      </ul>
-      <div className="flex items-center mr-10">
-        {user ? (
-          <UserButton />
-        ) : (
-          <Link href="/sign-in">
-            <Button>Login</Button>
-          </Link>
-        )}
-      </div>
-    </div>
+    <>
+      <nav
+        className={`w-full  px-5 lg:px-8 xl:px-[5%] py-4 flex items-center justify-between fixed top-0 `}
+      >
+        <Link className="flex items-center " href="/">
+          <Image
+            src="/prep2.png"
+            alt="logo"
+            width={150}
+            height={100}
+            className="w-28 cursor-pointer"
+          />
+        </Link>
+        <ul className="hidden text-xl font-Ovo md:flex items-center gap-5 lg:gap-8 rounded-full px-12 py-3 shadow-md bg-white bg-opacity-50">
+          <li>
+            <Link className="font-Ovo" href="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="font-Ovo" href="/dashboard">
+              Dashboard
+            </Link>
+          </li>
+        </ul>
+        <div className="flex items-center gap-5">
+          {/* <button>
+            <Image src={assets.moon_icon} alt="moon-icon" className="w-6 " />
+          </button> */}
+          <a
+            href="#contact"
+            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4"
+          >
+            {user ? <UserButton /> : <Link href="/sign-in">Sign In</Link>}
+          </a>
+        </div>
+      </nav>
+    </>
   );
 }
 
