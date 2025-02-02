@@ -39,9 +39,9 @@ function Feedback({ params }) {
         You have successfully completed the interview
       </p>
       <p className="text-xl my-3">Here is your interview Feedback</p>
-      <h2 className="text-primary text-lg my-3">
+      {/* <h2 className="text-primary text-lg my-3">
         Your Overall Score: <strong>7/10</strong>
-      </h2>
+      </h2> */}
       <h2>
         Find below the feedback for each question along with their ideal answers
         containing important pointers (click to expand)
@@ -88,8 +88,8 @@ function Feedback({ params }) {
         ))}
       </div>
 
-      <Link href="/dashboard">
-        <Button>Go to Dashboard</Button>
+      <Link href="/dashboard" className="mt-5">
+        <Button className="mt-5">Go to Dashboard</Button>
       </Link>
     </div>
   );
