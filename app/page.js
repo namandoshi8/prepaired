@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <div>
           <Image
-            src="/prephero.png"
+            src="/prep3.png"
             alt="hero"
             width={1000}
             height={800}
