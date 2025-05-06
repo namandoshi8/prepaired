@@ -12,7 +12,7 @@ function NavBar() {
   return (
     <>
       <nav
-        className={`w-full  px-5 lg:px-8 xl:px-[5%] py-4 flex items-center justify-between fixed top-0 `}
+        className={`w-full  px-5 lg:px-8 xl:px-[5%] py-4 flex items-center justify-between fixed top-0  `}
       >
         <Link className="flex items-center " href="/">
           <Image
